@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfslcrgvykvlk"]
+
+[ext_resource type="Script" path="res://NextTurnButton.gd" id="1_45tnv"]
+[ext_resource type="Script" path="res://Player.gd" id="1_e3y48"]
+[ext_resource type="TileSet" uid="uid://wyrwc71kggy7" path="res://dripping.tres" id="1_ec0q8"]
+[ext_resource type="Script" path="res://Camera.gd" id="2_d03oj"]
+[ext_resource type="Script" path="res://TileMap.gd" id="2_typ1s"]
+[ext_resource type="Script" path="res://AddPointButton.gd" id="6_3hebs"]
+[ext_resource type="Script" path="res://TurnLabel.gd" id="6_v1hxu"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="7_f2b2o"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_e3y48")
+
+[node name="View" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 0.3
+script = ExtResource("2_d03oj")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(15, 9)
+tile_set = ExtResource("1_ec0q8")
+format = 2
+layer_0/y_sort_enabled = true
+layer_1/name = ""
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_typ1s")
+metadata/Map = PackedVector2Array(0, 0, 1, 2.08165e-12, 1, 1, 2.08165e-12, 1, -1, 2.08165e-12, -1, -1, 2.08165e-12, -1, 2, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = -228.0
+offset_top = -127.0
+offset_right = 229.0
+offset_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+use_top_left = true
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="NextTurnButton" type="Button" parent="CenterContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = -1
+tooltip_text = "this is example"
+action_mode = 0
+text = "Next Turn"
+script = ExtResource("1_45tnv")
+
+[node name="AddPointButton" type="Button" parent="CenterContainer/Control"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.204
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 87.0
+offset_bottom = 70.0
+tooltip_text = "this is example"
+action_mode = 0
+text = "Add Point"
+script = ExtResource("6_3hebs")
+
+[node name="PlayerLabel" type="Label" parent="CenterContainer/Control"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 12.0
+offset_right = 448.0
+offset_bottom = 35.0
+script = ExtResource("6_v1hxu")
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/Control"]
+layout_mode = 1
+offset_left = 354.0
+offset_top = 41.0
+offset_right = 448.0
+offset_bottom = 64.0
+script = ExtResource("7_f2b2o")
